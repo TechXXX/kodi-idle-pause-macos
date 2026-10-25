@@ -2,7 +2,7 @@
 
 Kodi can keep rendering while it sits idle in another app or full-screen Space. This small, inspectable macOS monitor pauses Kodi after it has been in the background for 30 seconds with no video or audio playing. Kodi wakes automatically when you return to it.
 
-It is designed for the standard Kodi app in `/Applications/Kodi.app`, including Kodi 21. It uses `SIGSTOP` and `SIGCONT`, so paused Kodi consumes virtually no CPU. A three-finger swipe to another macOS Space is treated as Kodi moving to the background.
+It supports the standard macOS Kodi app in `/Applications/Kodi.app` from Kodi 19 onward. Kodi 21 is tested. It uses `SIGSTOP` and `SIGCONT`, so paused Kodi consumes virtually no CPU. A three-finger swipe to another macOS Space is treated as Kodi moving to the background.
 
 ## Why this is safe to inspect
 
