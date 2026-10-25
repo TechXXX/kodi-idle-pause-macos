@@ -21,6 +21,12 @@ It queries only Kodi's existing HTTP service on `127.0.0.1` to determine whether
 
 For the simplest install, download the repository as a ZIP from GitHub, unzip it, and double-click **Install Kodi Idle Pause.command**. Terminal asks for confirmation and shows the result.
 
+### First launch on macOS
+
+This project is not code-signed or notarized. On the first launch, macOS may block the downloaded `.command` file. In Finder, Control-click **Install Kodi Idle Pause.command**, choose **Open**, then confirm **Open** in the security prompt. You only need to do this once for that downloaded copy.
+
+The source files are in the same folder and on GitHub for review before running it. Removing this macOS warning would require distributing a code-signed and notarized build through an Apple Developer account.
+
 If you prefer Terminal, inspect the files and run:
 
 ```sh
