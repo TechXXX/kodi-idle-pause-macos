@@ -1,6 +1,6 @@
 # Kodi Idle Pause for macOS
 
-Kodi can keep rendering while it sits idle in another app or full-screen Space. This small, inspectable macOS monitor pauses Kodi after it has been in the background for 30 seconds with no video or audio playing. Kodi wakes automatically when you return to it.
+Kodi can keep rendering while it sits idle in another app or full-screen Space. This small, inspectable macOS monitor pauses Kodi after it has been in the background for 30 seconds with no loaded video or audio. A playing or paused movie is kept awake, and Kodi wakes automatically when you return to it.
 
 It supports the standard macOS Kodi app in `/Applications/Kodi.app` from Kodi 19 onward. Kodi 21 is tested. It uses `SIGSTOP` and `SIGCONT`, so paused Kodi consumes virtually no CPU. A three-finger swipe to another macOS Space is treated as Kodi moving to the background.
 
@@ -8,7 +8,7 @@ It supports the standard macOS Kodi app in `/Applications/Kodi.app` from Kodi 19
 
 The complete implementation is seven small text files in this repository. It does not download software, collect data, call a cloud service, or require an account or token.
 
-It queries only Kodi's existing HTTP service on `127.0.0.1` to determine whether something is playing. Its local credentials stay on the Mac and are never logged or transmitted.
+It queries only Kodi's existing HTTP service on `127.0.0.1` to determine whether a media player is loaded. Its local credentials stay on the Mac and are never logged or transmitted.
 
 ## Requirements
 
@@ -49,7 +49,7 @@ The installer never asks for an administrator password.
 ## Behaviour
 
 - Kodi must stay outside the foreground for 30 seconds before it can be paused.
-- Kodi remains awake while video or audio is playing.
+- Kodi remains awake while video or audio is playing or paused.
 - Kodi stays awake if the local playback check fails.
 - When Kodi is paused, its background add-ons and scheduled jobs pause too. They resume when Kodi returns to the foreground.
 - The monitor writes status messages to `~/Library/Logs/kodi-idle-pause.log`.

@@ -109,24 +109,17 @@ def kodi_rpc(method, params=None):
 
 
 def playback_active():
-    """Return True for playing, False for stopped or paused, None if uncertain."""
+    """Return True whenever Kodi has media loaded, False only when stopped.
+
+    A paused film still appears in ``Player.GetActivePlayers``. It must count
+    as active: suspending the whole Kodi process while a player is paused can
+    make resuming it unstable.
+    """
     try:
         players = kodi_rpc("Player.GetActivePlayers")
         if not isinstance(players, list):
             return None
-        for player in players:
-            player_id = player.get("playerid")
-            if player_id is None:
-                return None
-            properties = kodi_rpc(
-                "Player.GetProperties",
-                {"playerid": player_id, "properties": ["speed"]},
-            )
-            if not isinstance(properties, dict) or "speed" not in properties:
-                return None
-            if properties["speed"] != 0:
-                return True
-        return False
+        return bool(players)
     except Exception as exc:
         logger.warning("Playback check unavailable; Kodi remains awake: %s", type(exc).__name__)
         return None
